@@ -37,35 +37,35 @@ public class DonationResource {
 
     @POST
     public Response addDonations(Donation donation){
-        LOGGER.debug("Checking Donation Add Request");
+        LOGGER.info("Checking Donation Add Request");
         DB db = mongo.getDB(dbname);
         DBCollection collection = db.getCollection("User");
         JacksonDBCollection<User, String> coll = JacksonDBCollection.wrap(collection, User.class,
                 String.class);
         DBCursor<User> cursor = coll.find().is("username",donation.getUsername());
         if(cursor.hasNext()){
-            LOGGER.debug("User found");
+            LOGGER.info("User found");
             DBCollection donations = db.getCollection("Donations");
             JacksonDBCollection<Donation, String> donationStringJacksonDBCollection = JacksonDBCollection.wrap(donations, Donation.class,
                     String.class);
             WriteResult<Donation, String> result = donationStringJacksonDBCollection.insert(donation);
-            LOGGER.debug("Donation added");
+            LOGGER.info("Donation added");
             return Response.status(200).build();
         }
-        LOGGER.debug("User not in Database");
+        LOGGER.info("User not in Database");
         return Response.status(400).build();
     }
 
     @GET
     public Donations getDonations(@QueryParam("username") String username) {
-        LOGGER.debug("Checking Donation Get Request");
+        LOGGER.info("Checking Donation Get Request");
         DB db = mongo.getDB(dbname);
         DBCollection collection = db.getCollection("User");
         JacksonDBCollection<User, String> coll = JacksonDBCollection.wrap(collection, User.class,
                 String.class);
         DBCursor<User> cursor = coll.find().is("username",username);
         if(cursor.hasNext()){
-            LOGGER.debug("User found");
+            LOGGER.info("User found");
             DBCollection donationcoll = db.getCollection("Donations");
             JacksonDBCollection<Donation, String> donationStringJacksonDBCollection = JacksonDBCollection.wrap(donationcoll, Donation.class,
                     String.class);
@@ -76,7 +76,7 @@ public class DonationResource {
             }
             return new Donations(list);
         }
-        LOGGER.debug("User not in Database");
+        LOGGER.info("User not in Database");
         return new Donations();
 
     }

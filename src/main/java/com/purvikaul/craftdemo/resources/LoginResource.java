@@ -36,14 +36,14 @@ public class LoginResource {
     @POST
     @Path("/login")
     public LoginResponse login(User user) {
-        LOGGER.debug("Checking Login Request");
+        LOGGER.info("Checking Login Request");
         DB db = mongo.getDB(dbname);
         DBCollection collection = db.getCollection("User");
         JacksonDBCollection<User, String> coll = JacksonDBCollection.wrap(collection, User.class,
                 String.class);
         DBCursor<User> cursor = coll.find().is("username",user.getUsername());
         if(cursor.hasNext()){
-            LOGGER.debug("User found");
+            LOGGER.info("User found");
             User user1 = cursor.next();
             if(user1.getPassword().equals(user.getPassword())){
                 return new LoginResponse( UUID.randomUUID().toString(),user.getUsername());
@@ -55,7 +55,7 @@ public class LoginResource {
     @POST
     @Path("/signup")
     public LoginResponse signup(User user) {
-        LOGGER.debug("Checking Sign-Up Request");
+        LOGGER.info("Checking Sign-Up Request");
         System.out.println("Checking Sign-Up Request");
         DB db = mongo.getDB(dbname);
         DBCollection collection = db.getCollection("User");
@@ -63,9 +63,9 @@ public class LoginResource {
                 String.class);
         DBCursor<User> cursor = coll.find().is("username",user.getUsername());
         if(!cursor.hasNext()) {
-            LOGGER.debug("Username doesn't already exist");
+            LOGGER.info("Username doesn't already exist");
             WriteResult<User, String> result = coll.insert(user);
-            LOGGER.debug("User is added");
+            LOGGER.info("User is added");
             return new LoginResponse(UUID.randomUUID().toString(),user.getUsername());
         }
         return new LoginResponse();

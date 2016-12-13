@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-    <title>Big Active Data</title>
+    <title>Craft Demo Application</title>
     <head>
         <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="https://cdn.rawgit.com/gdi2290/angular-websocket/v1.0.9/angular-websocket.min.js"></script>
-        <script src="http://rawgit.com/angular-ui/angular-google-maps/2.0.X/dist/angular-google-maps.js"></script>
+       <!--  <script type="text/javascript" src="https://cdn.rawgit.com/gdi2290/angular-websocket/v1.0.9/angular-websocket.min.js"></script>
+        <script src="http://rawgit.com/angular-ui/angular-google-maps/2.0.X/dist/angular-google-maps.js"></script> -->
 
 
     </head>
@@ -15,18 +15,18 @@
         <div ng-controller="IndexController">
             <nav class="navbar navbar-light navbar-static-top"  style="background-color: #424242;">
                 <div class="container">
-                    <a class="navbar-brand" href="#">BAD_WebClient</a>
+                    <a class="navbar-brand" href="#">Craft Demo</a>
                     <form class="navbar-form navbar-right">
                         <div class="form-group">
-                            <label for="userId" style="color:#778899;">User</label>
-                            <input type="text" class="form-control" id="userId" placeholder="User ID" ng-model="userid">
+                            <label for="username" style="color:#778899;">User</label>
+                            <input type="text" class="form-control" id="userName" placeholder="User ID" ng-model="username">
                         </div>
                         <div class="form-group">
                             <label for="userPassword" style="color:#778899;">Password</label>
                             <input type="password" class="form-control" id="userPassword" placeholder="Password" ng-model="userpassword">
                         </div>
                         <button type="submit" class="btn btn-primary" ng-model="clicked" ng-init="clicked=false"
-                                ng-click="loginUser(userid, userpassword, true); clicked=true">Log In
+                                ng-click="loginUser(username, userpassword); clicked=true">Log In
                         </button>
                     </form>
                 </div>
@@ -38,8 +38,12 @@
                             <h2>Sign up here</h2>
                             <form>
                                 <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Name" ng-model="newUserName">
+                                    <label >First Name</label>
+                                    <input type="text" class="form-control" id="firstName" placeholder="Name" ng-model="firstname">
+                                </div>
+                                 <div class="form-group">
+                                    <label >Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" placeholder="Name" ng-model="lastname">
                                 </div>
                                 <div class="form-group">
                                     <label for="emailAddress">Email</label>
@@ -47,7 +51,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="userName">Username</label>
-                                    <input type="text" class="form-control" id="userName" placeholder="User Name" ng-model="newUserLoginName">
+                                    <input type="text" class="form-control" id="userName" placeholder="User Name" ng-model="newUserName">
                                 </div>
                                 <div class="form-group">
                                     <label for="newUserPassword">Password</label>
@@ -55,7 +59,7 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary" ng-model="newUserClicked"
                                         ng-init="newUserClicked=false"
-                                        ng-click="registerUser(newUserLoginName, newUserPassword, newUserEmail); newUserClicked=true">
+                                        ng-click="registerUser(firstname,lastname,newUserName, newUserPassword, newUserEmail); newUserClicked=true">
                                     Sign Up
                                 </button>
                             </form>
@@ -68,7 +72,7 @@
         <script type="text/javascript" src="/static/js/IndexController.js"></script>
         <script type="text/javascript" src="/static/js/IndexGetter.js"></script>
         <script type="text/javascript" src="/static/js/SessionStorage.js"></script>
-        <script type="text/javascript" src="/static/js/ng-infinite-scroll.min.js"></script> 
+        <!-- <script type="text/javascript" src="/static/js/ng-infinite-scroll.min.js"></script>  -->
         <link rel="stylesheet" type="text/css" href="/static/css/style.css">
     </body>
 </html>

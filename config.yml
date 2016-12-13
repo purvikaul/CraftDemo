@@ -8,3 +8,8 @@ server:
 mongohost: "localhost"
 mongoport: 27017
 db: "craftdemo"
+
+logging:
+  level: INFO
+  appenders:
+      - type: console

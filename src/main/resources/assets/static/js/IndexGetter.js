@@ -1,32 +1,29 @@
 app.factory('IndexGetter', ['$http', function($http){
 	return {
       postUserData: function(userId, userPassword, successFunction, errorFunction){
-        console.log("Hi");
 
         var message = {
-          'dataverseName' : "channels",
-          'userName' : userId,
-          'password' : userPassword,
-          'platform' : 'web'
+          'username' : userId,
+          'password' : userPassword
         };
         $http({
-          url: '/login',
+          url: "/api/login",
           method: "POST",
           data: message,
         }).then(successFunction, errorFunction);
       },
-      postRegisterUser: function(newUserName, newUserPassword, newUserEmail, successFunction, errorFunction) {
+      postRegisterUser: function(firstname,lastname, newUserName, newUserPassword, newUserEmail, successFunction, errorFunction) {
         console.log('Registering a new user');
 
         var message = {
-          'dataverseName' : "channels",
-          'userName' : newUserName,
+          'first_name': firstname,
+          'last_name' : lastname,
+          'username' : newUserName,
           'password' : newUserPassword,
           'email'    : newUserEmail,
-          'platform' : 'web'
         };
         $http({
-          url: '/register',
+          url: "/api/signup",
           method: "POST",
           data: message,
         }).then(successFunction, errorFunction);

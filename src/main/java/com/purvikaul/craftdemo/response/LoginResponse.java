@@ -6,25 +6,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * Created by purvi on 12/12/16.
  */
 public class LoginResponse {
-    private String accesscode;
+    private String accesstoken;
     private String username;
 
     public LoginResponse() {
     }
 
-    public LoginResponse(String accesscode, String username) {
-        this.accesscode = accesscode;
+    public LoginResponse(String accesstoken, String username) {
+        this.accesstoken = accesstoken;
         this.username = username;
     }
 
     @JsonProperty
-    public String getAccesscode() {
-        return accesscode;
+    public String getAccesstoken() {
+        return accesstoken;
     }
 
     @JsonProperty
-    public void setAccesscode(String accesscode) {
-        this.accesscode = accesscode;
+    public void setAccesstoken(String accesstoken) {
+        this.accesstoken = accesstoken;
     }
 
     @JsonProperty
