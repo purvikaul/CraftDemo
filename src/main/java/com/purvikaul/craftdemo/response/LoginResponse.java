@@ -7,14 +7,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class LoginResponse {
     private String accesstoken;
-    private String username;
-
+    private Long userid;
     public LoginResponse() {
     }
 
-    public LoginResponse(String accesstoken, String username) {
+    public LoginResponse(String accesstoken, Long userid) {
         this.accesstoken = accesstoken;
-        this.username = username;
+        this.userid = userid;
     }
 
     @JsonProperty
@@ -28,12 +27,12 @@ public class LoginResponse {
     }
 
     @JsonProperty
-    public String getUsername() {
-        return username;
+    public Long getUserid() {
+        return userid;
     }
 
     @JsonProperty
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserid(Long userid) {
+        this.userid = userid;
     }
 }

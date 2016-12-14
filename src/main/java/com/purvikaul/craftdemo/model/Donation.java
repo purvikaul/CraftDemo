@@ -1,24 +1,48 @@
 package com.purvikaul.craftdemo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.mongojack.MongoCollection;
-import org.mongojack.ObjectId;
+import com.purvikaul.craftdemo.request.DonationRequest;
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
+
+
+import javax.persistence.*;
 
 /**
  * Created by purvi on 12/12/16.
  */
-@MongoCollection(name="Donations")
+@Entity
+@Table(name="donation")
+@NamedQueries({
+        @NamedQuery(name = "com.purvikaul.craftdemo.model.Donation.findAll",
+                query = "select e from Donation e"),
+        @NamedQuery(name = "com.purvikaul.craftdemo.model.Donation.findByUserId",
+                query = "select e from Donation e "
+                        + "where e.user.id = :userid ")
+})
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Donation {
 
-    private String id;
-    private String username;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long d_id;
+
     private String item;
+
+    @Column(name = "item_value")
     private Double value;
     private String category;
     private Double deductible;
+
+    @Column(name = "time_stamp")
     private Long timestamp;
+
+    @ManyToOne(cascade =CascadeType.ALL, targetEntity = User.class)
+    @JoinColumn(name = "id",nullable = false)
+    @JsonIgnore
+    private User user;
 
     public Donation() {
     }
@@ -30,27 +54,30 @@ public class Donation {
         this.deductible = deductible;
         this.timestamp = timestamp;
     }
-
-    @ObjectId
-    @JsonProperty("_id")
-    public String getId() {
-        return id;
+    public Donation(DonationRequest donationRequest,User user) {
+        this.item = donationRequest.getItem();
+        this.value = donationRequest.getValue();
+        this.category = donationRequest.getCategory();
+        this.deductible = donationRequest.getDeductible();
+        this.timestamp = donationRequest.getTimestamp();
+        this.user = user;
     }
 
-    @ObjectId
-    @JsonProperty("_id")
-    public void setId(String id) {
-        this.id = id;
+    public long getD_id() {
+        return d_id;
     }
 
-    @JsonProperty
-    public String getUsername() {
-        return username;
+    public void setD_id(long d_id) {
+        this.d_id = d_id;
     }
 
-    @JsonProperty
-    public void setUsername(String username) {
-        this.username = username;
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @JsonProperty
