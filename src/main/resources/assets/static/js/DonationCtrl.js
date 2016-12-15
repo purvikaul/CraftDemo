@@ -14,8 +14,7 @@ app.controller('DonationCtrl',['$scope','$filter','$window', 'SessionStorage', '
     var xmlDoc;
 
     $scope.getXML = function () {
-        console.log(xmlDoc);
-        console.log("Download button clicked");
+        // console.log("Download button clicked");
         var blob = new Blob([
             xmlDoc
         ], {type: "text/plain;charset=utf-8"});
@@ -30,7 +29,7 @@ app.controller('DonationCtrl',['$scope','$filter','$window', 'SessionStorage', '
 
 
     var successFunction = function () {
-        console.log("Added Donations");
+        // console.log("Added Donations");
         $scope.item = '';
         $scope.value ='';
         $scope.category ='';
@@ -40,13 +39,10 @@ app.controller('DonationCtrl',['$scope','$filter','$window', 'SessionStorage', '
 
     var loadSuccessFunction = function (data) {
         $scope.donations = [];
-        console.log("In loadSuccess Function");
+        // console.log("In loadSuccess Function");
         for(var obj in data['data']["donations"]){
-            console.log('Donation'+ obj + data['data']["donations"][obj]);
             $scope.donations.push(data['data']["donations"][obj]);
         }
-        dons = $scope.donations;
-        console.log($scope.donations + " " + $scope.donations.length);
         xmlDoc = x2js.json2xml_str(
             {
                 'donations': {
@@ -54,15 +50,14 @@ app.controller('DonationCtrl',['$scope','$filter','$window', 'SessionStorage', '
                 }
             }
         );
-        console.log("XML: " + xmlDoc);
     }
 
     var errorFunction = function(data) {
-        console.log("Something went wrong: " + data);
+        // console.log("Something went wrong: " + data);
     }
 
     $scope.loadDonations = function () {
-        console.log("In loadDonations");
+        // console.log("In loadDonations");
         DonationGetter.getDonations($scope.userId,loadSuccessFunction,errorFunction);
     }
 

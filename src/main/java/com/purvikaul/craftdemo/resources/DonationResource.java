@@ -39,22 +39,22 @@ public class DonationResource {
     public Response addDonations(DonationRequest donationRequest){
         LOGGER.info("Checking Donation Add Request");
         User user = userDAO.findByUserId(donationRequest.getUserid());
-        Donation donation = new Donation(donationRequest,user);
-        donationDAO.insert(donation);
-        return Response.status(200).build();
+        if(user!= null){
+            Donation donation = new Donation(donationRequest,user);
+            donationDAO.insert(donation);
+            return Response.status(200).build();
+        }
+        return Response.status(Response.Status.BAD_REQUEST).build();
     }
 
     @GET
     @UnitOfWork
-    public DonationDAO getDonations(@QueryParam("userid") long userid) {
+    public Response getDonations(@QueryParam("userid") long userid) {
         LOGGER.info("Checking Donation Get Request");
-//        System.out.println("USER ID ============== " + donationDAO.findByUserId(1));
         donationDAO.findByUserId(userid);
-//        donationDAO.findAll();
-        return donationDAO;
-//        LOGGER.info("User not in Database");
-//        return new DonationDAO();
-
+        if(donationDAO != null)
+            return Response.ok(donationDAO).build();
+        return Response.status(Response.Status.BAD_REQUEST).build();
     }
 
 }

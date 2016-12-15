@@ -28,7 +28,7 @@ public class CraftDemoApplication extends Application<CraftDemoConfiguration> {
     }
     @Override
     public String getName() {
-        return "hello-world";
+        return "Craft Demo";
     }
 
     @Override

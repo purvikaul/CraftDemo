@@ -50,7 +50,7 @@ public class User {
     private String email;
 
     @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
-    List<Donation> donations;
+    private List<Donation> donations;
 
 
 
@@ -123,6 +123,14 @@ public class User {
 
     public long getId() {
         return id;
+    }
+
+    public List<Donation> getDonations() {
+        return donations;
+    }
+
+    public void setDonations(List<Donation> donations) {
+        this.donations = donations;
     }
 
     @Override

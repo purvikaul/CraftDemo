@@ -1,0 +1,25 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 9011
+  adminConnectors:
+    - type: http
+      port: 9012
+#mongohost: "localhost"
+#mongoport: 27017
+#db: "craftdemo"
+
+database:
+    # the name of the JDBC driver, mysql in our case
+    driverClass: com.mysql.jdbc.Driver
+    # the userid
+    user: root
+    # the password
+    password: password
+    # the JDBC URL
+    url: jdbc:mysql://localhost:3306/craftdemo
+
+logging:
+  level: INFO
+  appenders:
+      - type: console
