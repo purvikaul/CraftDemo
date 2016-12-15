@@ -1,6 +1,5 @@
 app.factory('SessionStorage', function($window) {
 	function set(key, data) {
-
 		if(key == 'username' || key == 'timestamp') {
 			if($window.sessionStorage.getItem(key)) {
 				var keyList = JSON.parse($window.sessionStorage.getItem(key));

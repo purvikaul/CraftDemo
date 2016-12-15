@@ -1,78 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-    <title>Craft Demo Application</title>
-    <head>
-        <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-       <!--  <script type="text/javascript" src="https://cdn.rawgit.com/gdi2290/angular-websocket/v1.0.9/angular-websocket.min.js"></script>
-        <script src="http://rawgit.com/angular-ui/angular-google-maps/2.0.X/dist/angular-google-maps.js"></script> -->
+<title>Craft Demo Application</title>
+<head>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!--  <script type="text/javascript" src="https://cdn.rawgit.com/gdi2290/angular-websocket/v1.0.9/angular-websocket.min.js"></script>
+     <script src="http://rawgit.com/angular-ui/angular-google-maps/2.0.X/dist/angular-google-maps.js"></script> -->
 
 
-    </head>
-    <body ng-app="myApp">
-        <div ng-controller="IndexController">
-            <nav class="navbar navbar-light navbar-static-top"  style="background-color: #424242;">
-                <div class="container">
-                    <a class="navbar-brand" href="#">Craft Demo</a>
-                    <form class="navbar-form navbar-right">
-                        <div class="form-group">
-                            <label for="userid" style="color:#778899;">User</label>
-                            <input type="text" class="form-control" d_id="userName" placeholder="User ID" ng-model="userid">
-                        </div>
-                        <div class="form-group">
-                            <label for="userPassword" style="color:#778899;">Password</label>
-                            <input type="password" class="form-control" d_id="userPassword" placeholder="Password" ng-model="userpassword">
-                        </div>
-                        <button type="submit" class="btn btn-primary" ng-model="clicked" ng-init="clicked=false"
-                                ng-click="loginUser(userid, userpassword); clicked=true">Log In
-                        </button>
-                    </form>
+</head>
+<body ng-app="myApp">
+<div ng-controller="IndexController">
+    <nav class="navbar navbar-dark navbar-static-top"  style="background-color: #03899c;">
+        <div class="container">
+            <a class="navbar-brand" href="#" style="color: aliceblue">Craft Demo</a>
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <!--<label for="userid" style="color:#778899;">User</label>-->
+                    <input type="text" class="form-control" d_id="userName" placeholder="User ID" ng-model="userid">
                 </div>
-            </nav>
-            <div class="container">
-                <div class="row">
-                    <div d_id="main-content">
-                        <div class="col-md-4 col-md-offset-4">
-                            <h2>Sign up here</h2>
-                            <form>
-                                <div class="form-group">
-                                    <label >First Name</label>
-                                    <input type="text" class="form-control" d_id="firstName" placeholder="Name" ng-model="firstname">
-                                </div>
-                                 <div class="form-group">
-                                    <label >Last Name</label>
-                                    <input type="text" class="form-control" d_id="lastName" placeholder="Name" ng-model="lastname">
-                                </div>
-                                <div class="form-group">
-                                    <label for="emailAddress">Email</label>
-                                    <input type="email" class="form-control" d_id="emailAddress" placeholder="Email" ng-model="newUserEmail">
-                                </div>
-                                <div class="form-group">
-                                    <label for="userName">Username</label>
-                                    <input type="text" class="form-control" d_id="userName" placeholder="User Name" ng-model="newUserName">
-                                </div>
-                                <div class="form-group">
-                                    <label for="newUserPassword">Password</label>
-                                    <input type="password" class="form-control" d_id="newUserPassword" placeholder="Password" ng-model="newUserPassword">
-                                </div>
-                                <button type="submit" class="btn btn-primary" ng-model="newUserClicked"
-                                        ng-init="newUserClicked=false"
-                                        ng-click="registerUser(firstname,lastname,newUserName, newUserPassword, newUserEmail); newUserClicked=true">
-                                    Sign Up
-                                </button>
-                            </form>
-                        </div>
+                <div class="form-group">
+                    <!--<label for="userPassword" style="color:#778899;">Password</label>-->
+                    <input type="password" class="form-control" d_id="userPassword" placeholder="Password" ng-model="userpassword">
+                </div>
+                <button type="submit" class="btn btn-warning login-button"  ng-model="clicked" ng-init="clicked=false"
+                        style="background-color: #ff7a0d"
+                        ng-click="loginUser(userid, userpassword); clicked=true">Log In
+                </button>
+            </form>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div d_id="main-content">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="form-container-shadow">
+                        <h2>Sign up here</h2>
+                        <form>
+                            <div class="form-group">
+                                <label >First Name</label>
+                                <input type="text" class="form-control" d_id="firstName"  ng-model="firstname">
+                            </div>
+                            <div class="form-group">
+                                <label >Last Name</label>
+                                <input type="text" class="form-control" d_id="lastName"  ng-model="lastname">
+                            </div>
+                            <div class="form-group">
+                                <label for="emailAddress">Email</label>
+                                <input type="email" class="form-control" d_id="emailAddress"  ng-model="newUserEmail">
+                            </div>
+                            <div class="form-group">
+                                <label for="userName">Username</label>
+                                <input type="text" class="form-control" d_id="userName"  ng-model="newUserName">
+                            </div>
+                            <div class="form-group">
+                                <label for="newUserPassword">Password</label>
+                                <input type="password" class="form-control" d_id="newUserPassword"  ng-model="newUserPassword">
+                            </div>
+                            <button type="submit" class="btn btn-info login-button" ng-model="newUserClicked"
+                                    style="margin-top: 15px"
+                                    ng-init="newUserClicked=false"
+                                    ng-click="registerUser(firstname,lastname,newUserName, newUserPassword, newUserEmail); newUserClicked=true">
+                                Sign Up
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="/static/js/app.js"></script>
-        <script type="text/javascript" src="/static/js/IndexController.js"></script>
-        <script type="text/javascript" src="/static/js/IndexGetter.js"></script>
-        <script type="text/javascript" src="/static/js/SessionStorage.js"></script>
-        <!-- <script type="text/javascript" src="/static/js/ng-infinite-scroll.min.js"></script>  -->
-        <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-    </body>
+    </div>
+</div>
+<script type="text/javascript" src="/static/js/app.js"></script>
+<script type="text/javascript" src="/static/js/IndexController.js"></script>
+<script type="text/javascript" src="/static/js/IndexGetter.js"></script>
+<script type="text/javascript" src="/static/js/SessionStorage.js"></script>
+<!-- <script type="text/javascript" src="/static/js/ng-infinite-scroll.min.js"></script>  -->
+<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</body>
 </html>

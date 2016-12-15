@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+        <html lang="en">
+        <title>My Donations</title>
+        <head>
+
+            <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+            <script type="text/javascript" src="xml2json.min.js"></script>
+        </head>
+<body ng-app="myApp">
+<div ng-controller="DonationCtrl" ng-init="loadDonations()">
+    <nav class="navbar navbar-light navbar-static-top" style="background-color: #03899c;">
+        <div class="container">
+            <a class="navbar-brand" href="#" style="color: aliceblue">Craft Demo</a>
+            <form class="navbar-form navbar-right">
+                <button type="submit" class="btn btn-warning login-button" style="background-color: #ff7a0d" ng-model="clicked" ng-init="clicked=false"
+                        ng-click="logoutUser()">Log Out</button>
+            </form>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row col-lg-offset-1 ">
+            <h2>My Donations</h2>
+        </div>
+        <div class="row">
+            <div class="col-lg-offset-1 col-lg-2">
+                <h4>Item</h4>
+            </div>
+            <div class="col-lg-2">
+                <h4>Category</h4>
+            </div>
+            <div class="col-lg-2">
+                <h4>Value</h4>
+            </div>
+            <div class="col-lg-2">
+                <h4>Deductible</h4>
+            </div>
+        </div>
+        <div class="col-lg-offset-1">
+        <hr style="margin: 5px 5px 5px 5px">
+        </div>
+        <div ng-repeat="donation in donations">
+            <div class="row">
+                <div class="col-lg-offset-1 col-lg-2">
+                    <h5>{{donation.item}}</h5>
+                </div>
+                <div class="col-lg-2">
+                    <h5>{{donation.category}}</h5>
+                </div>
+                <div class="col-lg-2">
+                    <h5>${{donation.value}}</h5>
+                </div>
+                <div class="col-lg-2">
+                    <h5>${{donation.deductible}}</h5>
+                </div>
+            </div>
+            <div class="col-lg-offset-1">
+                <hr style="margin: 3px 5px 3px 5px">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <form class="form-inline">
+                <div class="form-group col-lg-offset-1">
+                    <!--<div class="col-lg-2">-->
+                    <input type="text" class="form-control " d_id="userName" placeholder="Item" ng-model="item">
+                    <!--</div>-->
+                </div>
+                <div class="form-group col-lg-offset-1">
+                    <div class="">
+                        <select class="form-control " ng-model="category"  placeholder="Category">
+                            <option ng-repeat="c in categories" ng-selected="category==c" value="{{c}}">{{c}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-lg-offset-1">
+                    <div class="">
+                        <div class="input-group">
+                            <div class="input-group-addon">$</div>
+                            <input type="text" class="form-control col-xs-6 .col-sm-3" d_id="userPassword" placeholder="Value" ng-model="value">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-lg-offset-1">
+                    <div class="">
+                        <span>$</span><span ng-model="deductible">{{value*0.3}}</span>
+                    </div>
+                </div>
+                <!--<div class="col-lg-offset-1 col-lg-2">-->
+                <button type="submit" class="btn btn-warning login-button"  ng-model="clicked" ng-init="clicked=false"
+                        style="background-color: #ff7a0d"
+                        ng-click="addDonation(); clicked=true">Add
+                </button>
+                <!--</div>-->
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="/static/js/app.js"></script>
+<script type="text/javascript" src="/static/js/DonationCtrl.js"></script>
+<script type="text/javascript" src="/static/js/DonationGetter.js"></script>
+<script type="text/javascript" src="/static/js/SessionStorage.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</html></title>
+</head>
+<body>
+</body>
+</html>

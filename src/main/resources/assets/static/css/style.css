@@ -26,34 +26,12 @@ div#notifications {
 	border: 1px solid #000;
 	border-radius: 25px;
 }
-.map_canvas {
-	height: 200px;
-	width: 100%;
-	margin: 0px;
+.form-container-shadow{
+	box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.2);
+	padding: 15px
 }
-.map_canvas_loc {
-	height: 300px;
-	width: 100%;
-	margin: 2px;
-	padding-top: 50px;
-}
-
-.map_canvas {
-	position: relative;
-}
-.map_canvas_big {
-	position: relative;
-}
-.map_canvas_big {
-	height: 400px;
-	width: 100%;
-	margin: 0px;
-}
-
-.angular-google-map-container {
-	position: absolute;
-	top: 2px;
-	bottom: 0;
-	right: 0;
-	left: 0;
+.login-button {
+	padding-left: 15px;
+	padding-right: 15px;
+	background-color: #03899c;
 }

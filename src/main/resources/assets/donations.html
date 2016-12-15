@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>My Donations</title>
+<head>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="static/js/xml2json.min.js"></script>
+    <script type="text/javascript" src="static/js/FileSaver.min.js"></script>
+</head>
+<body ng-app="myApp">
+<div ng-controller="DonationCtrl" ng-init="loadDonations()">
+    <nav class="navbar navbar-light navbar-static-top" style="background-color: #03899c;">
+        <div class="container">
+            <a class="navbar-brand" href="#" style="color: aliceblue">Craft Demo</a>
+            <form class="navbar-form navbar-right">
+                <button type="submit" class="btn btn-warning login-button" style="background-color: #ff7a0d" ng-model="clicked" ng-init="clicked=false"
+                        ng-click="logoutUser()">Log Out</button>
+            </form>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <!--<div class="panel-heading"><h3>Add a Donation</h3></div>-->
+                        <table class = "table table-hover">
+                            <caption><h2>My Donations</h2>
+                                <button class="btn btn-warrning" style="float: right; background-color: #03899c; color: aliceblue" ng-click="getXML()">Export as XML</button>
+                            </caption>
+                            <thead>
+                            <tr>
+                                <th class="col-lg-2">Item</th>
+                                <th class="col-lg-2">Category</th>
+                                <th class="col-lg-2">Value</th>
+                                <th class="col-lg-2">Deductible</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="donation in donations">
+                                <td class="col-lg-2">{{donation.item}}</td>
+                                <td class="col-lg-2">{{donation.category}}</td>
+                                <td class="col-lg-2">${{donation.value}}</td>
+                                <td class="col-lg-2">${{donation.deductible}}</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="panel-heading"><h3>Add a Donation</h3></div>
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label for="item">Item</label>
+                                <input type="text" class="form-control " id="item" d_id="userName" placeholder="Item" ng-model="item">
+                            </div>
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select class="form-control " id="category" ng-model="category"  placeholder="Category">
+                                    <option ng-repeat="c in categories" ng-selected="category==c" value="{{c}}">{{c}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group ">
+                                <label for="value">Value</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">$</div>
+                                    <input type="text" class="form-control col-xs-6 .col-sm-3" id="value" d_id="userPassword" placeholder="Value" ng-model="value">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="deductible">Deductible</label>
+                                <p class="form-control-static mb-0" id="deductible">{{value*0.3}}</p>
+                            </div>
+                            <div class="form-group col-sm-offset-1">
+                            <button type="submit" class="btn btn-warning login-button"  ng-model="clicked" ng-init="clicked=false"
+                                    style="background-color: #ff7a0d"
+                                    ng-click="addDonation(); clicked=true">Save</button>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="/static/js/app.js"></script>
+<script type="text/javascript" src="/static/js/DonationCtrl.js"></script>
+<script type="text/javascript" src="/static/js/DonationGetter.js"></script>
+<script type="text/javascript" src="/static/js/SessionStorage.js"></script>
+<script>
+    dons = "";
+    x2js = "";
+</script>
+<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</html>

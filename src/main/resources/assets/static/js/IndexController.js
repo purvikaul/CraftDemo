@@ -1,9 +1,12 @@
 app.controller('IndexController', ['$scope', '$window', 'IndexGetter', 'SessionStorage', function($scope, $window,IndexGetter, SessionStorage) { 
     var successFunction = function(data) {
-        console.log(data['data']['accessToken']);
-        SessionStorage.set('accessToken', data['data']['accessToken']);
-        SessionStorage.set('username', data['data']['username']);
-        $window.location.href = '/home';
+        console.log("log-in successfull")
+        console.log(data['data']);
+        console.log(data['data']['userid'])
+        SessionStorage.set('accessToken', data['data']['accesstoken']);
+        SessionStorage.set('userid',data['data']['userid']);
+        $window.location.href = '/donations.html';
+        g1 = data;
     }
 
     // var subscribeSuccessFunction = function(data) {
@@ -19,6 +22,7 @@ app.controller('IndexController', ['$scope', '$window', 'IndexGetter', 'SessionS
         console.log("registration was a success!");
         SessionStorage.set('userId', data['data']['userId']);
         $scope.loginUser($scope.newUserName, $scope.newUserPassword, false);
+        g2 = data;
     }
 
     var errorFunction = function(data) {
